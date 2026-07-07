@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mondo+ | Official Site</title>
+  <style>
+    /* Reset & Core Design System (Adobe/Nintendo Minimalist Style) */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: #0b0d10;
+      color: #f5f5f7;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Universal Link Styling */
+    a {
+      color: #ffffff;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    /* Premium Header Navigation Bar */
+    header {
+      background-color: rgba(11, 13, 16, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 24px;
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 1.4rem;
+      letter-spacing: -0.5px;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, #a855f7, #22c55e);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: #94a3b8;
+    }
+
+    .nav-links a:hover {
+      color: #ffffff;
+    }
+
+    /* Hero Banner Section (Like Adobe product pages or Nintendo feature reels) */
+    .hero {
+      position: relative;
+      height: 80vh;
+      min-height: 550px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 24px;
+      margin-top: 60px;
+      background: radial-gradient(circle at top right, rgba(168, 85, 247, 0.15), transparent 50%),
+                  radial-gradient(circle at bottom left, rgba(34, 197, 94, 0.12), transparent 50%);
+    }
+
+    .hero-content {
+      max-width: 800px;
+    }
+
+    .hero-tag {
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #22c55e;
+      margin-bottom: 16px;
+    }
+
+    .hero-title {
+      font-size: 3.5rem;
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+
+    .hero-description {
+      font-size: 1.25rem;
+      color: #94a3b8;
+      max-width: 600px;
+      margin: 0 auto 32px auto;
+    }
+
+    /* Modern CTA Buttons */
+    .btn-group {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+    }
+
+    .btn {
+      padding: 12px 28px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background-color: #ffffff;
+      color: #0b0d10;
+    }
+
+    .btn-primary:hover {
+      background-color: #e2e8f0;
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background-color: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #ffffff;
+    }
+
+    .btn-secondary:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    /* Production Grid Content Sections */
+    .section-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 24px;
+    }
+
+    .section-header {
+      margin-bottom: 48px;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+    }
+
+    .section-subtitle {
+      color: #94a3b8;
+      font-size: 1rem;
+    }
+
+    /* 2-Column Showcase Grid Layout */
+    .showcase-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 32px;
+    }
+
+    /* Card Panels */
+    .showcase-card {
+      background-color: #13171f;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s;
+    }
+
+    .showcase-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255, 255, 255, 0.15);
+    }
+
+    /* Placeholder for Visual Artwork Elements */
+    .card-media {
+      height: 240px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      position: relative;
+    }
+
+    /* Custom Themes for Card Backgrounds */
+    .bg-forest {
+      background: linear-gradient(135deg, #1b3a24, #08120c);
+    }
+
+    .bg-engine {
+      background: linear-gradient(135deg, #2e1065, #0f0521);
+    }
+
+    .badge {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .card-body {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .card-text {
+      color: #94a3b8;
+      font-size: 0.95rem;
+      margin-bottom: 24px;
+      flex-grow: 1;
+    }
+
+    .card-link {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #22c55e;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .card-link:hover {
+      color: #4ade80;
+    }
+
+    /* Clean Footer Layout */
+    footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      background-color: #080a0d;
+      padding: 48px 24px;
+      text-align: center;
+      font-size: 0.85rem;
+      color: #64748b;
+    }
+
+    /* Responsive Mobile Overrides */
+    @media (max-width: 768px) {
+      .hero-title { font-size: 2.5rem; }
+      .nav-links { display: none; } /* Kept clean for single-page scalability */
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Premium Floating Navigation Bar -->
+  <header>
+    <div class="nav-container">
+      <a href="#" class="logo">Mondo+</a>
+      <ul class="nav-links">
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Adobe-Style Spotlight Hero Header -->
+  <section class="hero">
+    <div class="hero-content">
+      <p class="hero-tag">Now In Active Development</p>
+      <h1 class="hero-title">Crafting the Next Generation of Interactive Worlds.</h1>
+      <p class="hero-description">Independent game development studio specializing in high-performance custom engine architecture and rich atmospheric experiences.</p>
+      <div class="btn-group">
+        <a href="#projects" class="btn btn-primary">Explore Projects</a>
+        <a href="https://github.com" target="_blank" class="btn btn-secondary">GitHub Source</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Nintendo-Style Modular Layout Content Grid -->
+  <main class="section-container" id="projects">
+    <div class="section-header">
+      <h2 class="section-title">Current Lineup</h2>
+      <p class="section-subtitle">Take an inside look at our games and underlying technologies.</p>
+    </div>
+
+    <div class="showcase-grid">
+      <!-- Project Card 1: The Game & OST -->
+      <article class="showcase-card">
+        <div class="card-media bg-forest">
+          <span class="badge">Original Soundtrack Included</span>
+          <!-- When your artwork is hosted, replace this text with an <img> tag -->
+          <span style="font-size: 2.5rem;">🌲</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">The Mysterious Forest</h3>
+          <p class="card-text">An immersive journey deep into a shifting woodland world. Built hand-in-hand with an upcoming premium dynamic soundtrack coming soon to Spotify and Apple Music.</p>
+          <a href="#" class="card-link">View Details &rarr;</a>
+        </div>
+      </article>
+
+      <!-- Project Card 2: Custom Game Engine -->
+      <article class="showcase-card">
+        <div class="card-media bg-engine">
+          <span class="badge">Tech Stack</span>
+          <!-- Engine graphical logo placeholder -->
+          <span style="font-size: 2.5rem;">🐋</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Orca Engine™</h3>
+          <p class="card-text">A high-performance, cross-platform hardware-native game framework. Written from the ground up featuring Vulkan, DirectX 11, Metal, Slang Shading, and advanced GraalVM script bindings.</p>
+          <a href="https://github.com" target="_blank" class="card-link">Explore Code Repository &rarr;</a>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <!-- Standard Studio Copyright Footer -->
+  <footer>
+    <div class="section-container" style="padding: 0;">
+      <p>&copy; 2026 Mondo+. All rights reserved.</p>
+      <p style="margin-top: 8px; font-size: 0.75rem; color: #475569;">All game titles, codebases, software frameworks, and associated audio formats are trademarks of Mondo+.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
